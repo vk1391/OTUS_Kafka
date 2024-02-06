@@ -1,0 +1,47 @@
+---
+
+- name: Opensearch installation & configuration
+  hosts: os-cluster
+  become: true
+  tags:
+    - opensearch
+  roles:
+    - { role: linux/opensearch }
+
+- name: Opensearch dashboards installation & configuration
+  hosts: dashboards
+  become: true
+  tags:
+    - dashboard
+  roles:
+    - { role: linux/dashboards }
+- name: install app in host1
+  hosts: nginx
+  become: true
+  tags:
+    - php
+  roles:
+    - { role: linux/php-fpm_mysql }
+- name: install fluent bit on master
+  hosts: os1 
+  become: true
+  tags:
+    - fluent
+  roles:
+    - { role: linux/fluent-bit }
+- name: install kafka 
+  hosts: kafka-cluster 
+  become: true
+  tags:
+    - kafka
+  roles:
+    - { role: linux/kafka }
+- name: install wordpress
+  hosts: wordpress
+  become: true
+  tags:
+    - wp
+  roles:
+    - { role: linux/wordpress }
+  
+

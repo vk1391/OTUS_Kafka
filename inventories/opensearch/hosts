@@ -1,0 +1,29 @@
+
+os1 ansible_host=192.168.56.205  ansible_user=root ip=192.168.56.205 roles=data,master ansible_private_key_file=".vagrant/machines/master1/virtualbox/private_key" 
+os2 ansible_host=192.168.56.206  ansible_user=root ip=192.168.56.206 roles=data,ingest ansible_private_key_file=".vagrant/machines/ingest1/virtualbox/private_key"
+os3 ansible_host=192.168.56.207  ansible_user=root ip=192.168.56.207 roles=data,ingest ansible_private_key_file=".vagrant/machines/ingest2/virtualbox/private_key"
+dashboards1 ansible_host=192.168.56.208 ansible_user=root ip=192.168.56.208 ansible_private_key_file=".vagrant/machines/dashboard/virtualbox/private_key"
+nginx ansible_host=192.168.56.209 ansible_user=root ip=192.168.56.209 ansible_private_key_file=".vagrant/machines/nginx/virtualbox/private_key"
+wordpress ansible_host=192.168.56.210 ansible_user=root ip=192.168.56.210 ansible_private_key_file=".vagrant/machines/wordpress/virtualbox/private_key"
+kafka1 ansible_host=192.168.56.211 ansible_user=root ip=192.168.56.211 ansible_private_key_file=".vagrant/machines/kafka1/virtualbox/private_key"
+kafka2 ansible_host=192.168.56.212 ansible_user=root ip=192.168.56.212 ansible_private_key_file=".vagrant/machines/kafka2/virtualbox/private_key"
+kafka3 ansible_host=192.168.56.213 ansible_user=root ip=192.168.56.213 ansible_private_key_file=".vagrant/machines/kafka3/virtualbox/private_key"
+
+
+# List all the nodes in the os cluster
+[os-cluster]
+os1
+os2
+os3
+
+# List all the Master eligible nodes under this group
+[master]
+os1
+
+[dashboards]
+dashboards1
+
+[kafka-cluster]
+kafka1
+kafka2
+kafka3
